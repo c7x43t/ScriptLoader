@@ -1,0 +1,104 @@
+openapi: "3.0.0"
+info:
+  version: "0.1.0"
+  title: OAIE Sampdle
+  description: |
+    https://github.com/OAIE/oaie-sketch
+    <!--OAIE.viz--><div style='height:500px;background-color:#eee;overflow:auto;position:relative;white-space:nowrap;border-radius:10px;'><span style='border-bottom:1px solid black;position:absolute;left:144.389px;top:79.6868px;width:64.1562px;transform:matrix(0.913337, 0.407205, -0.407205, 0.913337, 0, 0);transform-origin:0 0;'><span style='border:1px solid black;width:5px;height:5px;position:absolute;right:0;transform:rotate(45deg);transform-origin:100% 0;border-left:0;border-bottom:0;'></span></span><span style='border-bottom:1px solid black;position:absolute;left:175.39px;top:147.996px;width:29.0312px;transform:matrix(0.950876, -0.309573, 0.309573, 0.950876, 0, 0);transform-origin:0 0;'><span style='border:1px solid black;width:5px;height:5px;position:absolute;right:0;transform:rotate(45deg);transform-origin:100% 0;border-left:0;border-bottom:0;'></span></span><span style='border-bottom:1px solid black;position:absolute;left:151.063px;top:89.632px;width:55.4062px;transform:matrix(0.937112, 0.349028, -0.349028, 0.937112, 0, 0);transform-origin:0 0;'><span style='border:1px solid black;width:5px;height:5px;position:absolute;right:0;transform:rotate(45deg);transform-origin:100% 0;border-left:0;border-bottom:0;'></span></span><span style='border-bottom:1px solid black;position:absolute;left:151.063px;top:81.8343px;width:57.0469px;transform:matrix(0.91036, 0.413818, -0.413818, 0.91036, 0, 0);transform-origin:0 0;'><span style='border:1px solid black;width:5px;height:5px;position:absolute;right:0;transform:rotate(45deg);transform-origin:100% 0;border-left:0;border-bottom:0;'></span></span><div oaie-key='operation.post./sample/{sampleId}' style='border:1px solid rgb(73, 204, 144);background:rgb(238, 250, 245);position:absolute;left:0px;top:0px;width:144.391px;height:95px;padding:5px;border-radius:5px;'><div><b>post /sample/{sampleId}</b></div><div style='white-space:normal'>getSample </div><div>sampleId (string)</div></div><div oaie-key='operation.put./sample/{sampleId}' style='border:1px solid rgb(252, 161, 48);background:rgb(255, 246, 236);position:absolute;left:31px;top:124px;width:144.391px;height:95px;padding:5px;border-radius:5px;'><div><b>put /sample/{sampleId}</b></div><div style='white-space:normal'>putSample </div><div>sampleId (string)</div></div><div oaie-key='operation.get./samplee/{sampleId}' style='border:1px solid rgb(97, 175, 254);background:rgb(240, 247, 255);position:absolute;left:0px;top:0px;width:151.062px;height:123px;padding:5px;border-radius:5px;'><div><b>get /samplee/{sampleId}</b></div><div style='white-space:normal'>getSample </div><div>sampleId (string)</div><div>sampleId2 (string)</div><div>sampleId3 (string)</div></div><div oaie-key='operation.put./samplee/{sampleId}' style='border:1px solid rgb(252, 161, 48);background:rgb(255, 246, 236);position:absolute;left:0px;top:0px;width:151.062px;height:95px;padding:5px;border-radius:5px;'><div><b>put /samplee/{sampleId}</b></div><div style='white-space:normal'>putSample </div><div>sampleId (string)</div></div><div oaie-key='schema.Sample' style='position:absolute;left:203px;top:70px;width:86.0469px;height:110px;border:1px solid silver;background:white;padding:5px;border-radius:5px;'><div><b>Sample</b></div><div>one (string)</div><div>two (string)</div><div>d (string)</div></div></div><div style='padding:5px;color:gray;float:right;'>OAIE visualization</div><!--/OAIE.viz-->
+servers:
+  - url: localhost:8080
+paths:
+  /sample/{sampleId}:
+    post:
+      operationId: getSample
+      tags:
+        - Sample
+      parameters:
+        - in: path
+          name: sampleId
+          schema:
+            type: string
+          required: true
+      responses:
+        '200':
+          description: Get the Sample
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Sample'
+    put:
+      operationId: putSample
+      tags:
+        - Sample
+      parameters:
+        - in: path
+          name: sampleId
+          schema:
+            type: string
+          required: true
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Sample'
+      responses:
+        '204':
+          description: No content
+  /samplee/{sampleId}:
+    get:
+      operationId: getSample
+      tags:
+        - Sample
+      parameters: 
+        - in: path
+          name: sampleId
+          schema:
+            type: string
+          required: true
+        - in: path
+          name: sampleId2
+          schema:
+            type: string
+          required: true
+        - in: path
+          name: sampleId3
+          schema:
+            type: string
+          required: true
+      responses:
+        '200':
+          description: Get the Sample
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Sample'
+    put:
+      operationId: putSample
+      tags:
+        - Sample
+      parameters:
+        - in: path
+          name: sampleId
+          schema:
+            type: string
+          required: true
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Sample'
+      responses:
+        '204':
+          description: No content
+components:
+  schemas:
+    Sample:
+      properties:
+        one:
+          type: string
+        two:
+          type: string
+        d:
+          type: string
